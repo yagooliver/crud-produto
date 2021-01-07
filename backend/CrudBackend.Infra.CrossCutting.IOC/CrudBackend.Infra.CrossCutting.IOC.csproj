@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CrudBackend.Application\CrudBackend.Application.csproj" />
+    <ProjectReference Include="..\CrudBackend.Infra.CrossCutting.Bus\CrudBackend.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\CrudBackend.Infra.Data\CrudBackend.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
