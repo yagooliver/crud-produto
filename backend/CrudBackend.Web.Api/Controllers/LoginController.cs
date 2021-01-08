@@ -1,4 +1,5 @@
-﻿using CrudBackend.Domain.Core.Interface.Servicos;
+﻿using CrudBackend.Application.ViewModels;
+using CrudBackend.Domain.Core.Interface.Servicos;
 using CrudBackend.Domain.Core.Shared.Handler;
 using CrudBackend.Domain.Core.Shared.Helper;
 using CrudBackend.Domain.Core.Shared.Notificacao;
@@ -23,12 +24,12 @@ namespace CrudBackend.Web.Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> LoginAsync(string login, string senha)
+        public async Task<IActionResult> LoginAsync(LoginVM login)
         {
-            var autenticado = await AutenticaRequest.LoginAsync(login, senha);
+            var autenticado = await AutenticaRequest.LoginAsync(login.Login, login.Senha);
             if (autenticado.Success)
             {
-                var token = await Task.Run(() => _loginService.RetornaToken(login));
+                var token = await Task.Run(() => _loginService.RetornaToken(login.Login));
 
                 return Response(token);
             }

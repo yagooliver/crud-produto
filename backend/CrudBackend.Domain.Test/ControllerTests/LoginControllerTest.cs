@@ -1,4 +1,5 @@
 ﻿using CrudBackend.Application.Servicos;
+using CrudBackend.Application.ViewModels;
 using CrudBackend.Domain.Core.Interface.Servicos;
 using CrudBackend.Domain.Core.Shared.Handler;
 using CrudBackend.Domain.Core.Shared.Models;
@@ -53,7 +54,7 @@ namespace CrudBackend.Domain.Test.ControllerTests
         [TestMethod]
         public async Task Nao_deve_autenticar()
         {
-            var resultado = (await _controller.LoginAsync("admin", "admin") as OkObjectResult).Value as ApiSucesso;
+            var resultado = (await _controller.LoginAsync(new LoginVM("admin", "admin")) as OkObjectResult).Value as ApiSucesso;
             var autenticado = resultado.Data as ResultadoApi;
             Assert.IsFalse(autenticado.Success);
             Assert.AreEqual("authentication username or password invalid", autenticado.Error);
@@ -62,7 +63,7 @@ namespace CrudBackend.Domain.Test.ControllerTests
         [TestMethod]
         public async Task Deve_autenticar_retorna_token()
         {
-            var resultado = (await _controller.LoginAsync("11234567890", "09876543211") as OkObjectResult).Value as ApiSucesso;
+            var resultado = (await _controller.LoginAsync(new LoginVM("11234567890", "09876543211")) as OkObjectResult).Value as ApiSucesso;
             var autenticado = resultado.Data as TokenJWT;
             Assert.IsTrue(autenticado.Autenticado);
             Assert.IsNotNull(autenticado.Token);
