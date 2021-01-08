@@ -1,7 +1,7 @@
 const type = "PRODUTO_";
 
 export const GET_PRODUTOS = type + "GET_PRODUTOS";
-export const GGET_PRODUTOS_BY_ID = type + "GET_PRODUTOS_BY_ID";
+export const GET_PRODUTOS_BY_ID = type + "GET_PRODUTOS_BY_ID";
 export const DELETE_PRODUTO = type + "DELETE_PRODUTO";
 export const POST_PRODUTO = type + "POST_PRODUTO";
 export const PUT_PRODUTO = type + "PUT_PRODUTO";

@@ -1,10 +1,32 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace CrudBackend.Web.Api
 {
     public class Program
     {
+#if !DEBUG
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .ConfigureAppConfiguration((hostingContext, config) => {
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+                    config.AddEnvironmentVariables();
+
+                    if(args != null){
+                        config.AddCommandLine(args);
+                    }
+                })
+                .UseUrls("http://*:80")
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
+#else
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -16,5 +38,6 @@ namespace CrudBackend.Web.Api
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+#endif
     }
 }

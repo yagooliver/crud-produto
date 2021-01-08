@@ -41,14 +41,28 @@ namespace CrudBackend.Web.Api.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Post(ProdutoAddCommand comando) => Response(await _mediator.ExecutaComando(comando));
+        public async Task<IActionResult> Post(ProdutoAddCommand comando)
+        {
+            var produtoId = await _mediator.ExecutaComando(comando);
+            var produto = _produtoService.GetProduto(produtoId);
+            return Response(produto);
+        }
 
         [Authorize]
         [HttpPut]
-        public async Task<IActionResult> Put(ProdutoAtualizaCommand comando) => Response(await _mediator.ExecutaComando(comando));
+        public async Task<IActionResult> Put(ProdutoAtualizaCommand comando)
+        {
+            await _mediator.ExecutaComando(comando);
+            var produto = await Task.Run(() => _produtoService.GetProduto(comando.Id));
+            return Response(produto);
+        }
 
         [Authorize]
-        [HttpDelete]
-        public async Task<IActionResult> Delete(ProdutoDeletaCommand comando) => Response(await _mediator.ExecutaComando(comando));
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var resultado = await _mediator.ExecutaComando(new ProdutoDeletaCommand { Id = id });
+            return Response(resultado ? id : Guid.Empty);
+        }
     }
 }

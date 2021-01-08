@@ -59,11 +59,11 @@ const AppBarComponent = () => {
             {isLoggedIn
                     ?
                     [
-                      <Typography variant="h6" className={classes.title}>
+                      <Typography variant="h6" className={classes.title} key={1}>
                         Olá
                       </Typography>,
                       
-                      <Button
+                      <Button  key={2}
                       variant="contained"
                       color="primary"
                       
