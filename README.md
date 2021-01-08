@@ -5,6 +5,7 @@ Aplicação para realizar cruds de produtos.
 - Necessário versão do visual studio 2019 16.8.2+.
 - .NET 5.0 (podem ser baixados em https://dotnet.microsoft.com/download).
 - Docker
+- Node
 - Linux ou Windows com Hyper-V e WSL ativados
 
 ## Tecnologias:
