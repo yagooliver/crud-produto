@@ -25,7 +25,7 @@ Aplicação para realizar cruds de produtos.
 - Unit of Work
 - Repository and Generic Repository
 
-## Instructions
+## Instruções
 Para executar essa aplicação é necessário ter o docker instalado e executar o comando `"docker-compose build"` no diretório base do projeto e em seguida executar o comando `"docker-compose up -d"`. Os comandos irão iniciar os containers automaticamente, se possível, checar se os containers estão sendo executados `"docker container ps -a"`. Após a execução a API será acessada via http://localhost:8081/swagger e a aplicação através da url http://localhost:8080/
 
 Em caso de execução direta pelo visual studio é necessário checar as connectionstrings e a url da api no arquivo .ENV do projeto web-app
