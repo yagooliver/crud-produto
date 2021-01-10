@@ -6,7 +6,6 @@ import {
     CardMedia,
     IconButton,
     Link,
-    Dialog
 } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
@@ -43,13 +42,6 @@ const FotoUpload = (props) => {
 
     reader.readAsBinaryString(file);
   }
-
-  const handleOpenLogo = (e) => {
-    e.preventDefault();
-
-    props.setOpenLogo(true);
-  }
-
   
   const foto = (props.foto === null || props.foto === undefined) ? "" : 'data:image/jpeg;base64,' + props.foto;
 
