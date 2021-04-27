@@ -17,6 +17,8 @@ Aplicação para realizar cruds de produtos.
 - Swagger UI
 - UnitTests (MSTEST)
 - Docker
+- ReactJS
+- Redux
 
 ## Arquitetura:
 - SOLID
